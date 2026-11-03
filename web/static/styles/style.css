@@ -90,3 +90,41 @@ div {
 .container-sm.container-prose {
     max-width: 880px;
 }
+
+/* the index is the only way into a section of a page nine screens tall, so it
+   stays in view rather than scrolling away with the headline */
+.container-prose nav[aria-label="Sections of this page"] {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: #FFF;
+    padding: .45rem 0;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #e9e9ee;
+}
+
+.container-prose nav[aria-label="Sections of this page"] .list-inline-item {
+    margin-right: 1rem;
+}
+
+/* from xxl up the 880px column leaves 220px of margin on either side, which is
+   room for the index to sit beside the text instead of above it, costing no
+   vertical space at all. below that the margin is too narrow and the pinned
+   bar above is what is used. */
+@media (min-width: 1400px) {
+    .container-prose nav[aria-label="Sections of this page"] {
+        top: 1.5rem;
+        float: left;
+        width: 200px;
+        margin-left: -232px;
+        margin-bottom: 0;
+        padding: 0;
+        background: none;
+        border-bottom: 0;
+    }
+    .container-prose nav[aria-label="Sections of this page"] .list-inline-item {
+        display: block;
+        margin-right: 0;
+        margin-bottom: .4rem;
+    }
+}
